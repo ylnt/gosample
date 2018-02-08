@@ -32,7 +32,10 @@ func main() {
 	http.Handle("/metrics", promhttp.Handler())
 
 	http.HandleFunc("/hello", hwm.SayHelloWorld)
+<<<<<<< HEAD
 	http.HandleFunc("/go", hwm.SayIntroToGo)
+=======
+>>>>>>> 00f41174e6e7cd1c36a3d3ac10eea8aaea40a57c
 	go logging.StatsLog()
 
 	tracer.Init(&tracer.Config{Port: 8700, Enabled: true})

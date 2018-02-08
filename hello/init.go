@@ -53,6 +53,7 @@ func (hlm *HelloWorldModule) SayHelloWorld(w http.ResponseWriter, r *http.Reques
 	hlm.someSlowFuncWeWantToTrace(ctx, w)
 }
 
+<<<<<<< HEAD
 func (hlm *HelloWorldModule) SayIntroToGo(w http.ResponseWriter, r *http.Request) {
 	type student struct {
 		no    int
@@ -91,6 +92,8 @@ func (hlm *HelloWorldModule) SayIntroToGo(w http.ResponseWriter, r *http.Request
 	}
 }
 
+=======
+>>>>>>> 00f41174e6e7cd1c36a3d3ac10eea8aaea40a57c
 func (hlm *HelloWorldModule) someSlowFuncWeWantToTrace(ctx context.Context, w http.ResponseWriter) {
 	span, ctx := opentracing.StartSpanFromContext(ctx, "someSlowFuncWeWantToTrace")
 	defer span.Finish()
