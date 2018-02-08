@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+        <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.js"></script>
+    </head>
+
+    <body>
+
+    <center>
+    <h1 class="ui header">Big Project</h1>
+    </center>
+    <div class="ui divider"></div>
+
+    <div id="app">
+      <center>
+      <div class="ui massive icon input">
+            <input type="text" @keyup.enter="getUser()" style="text-align:center;" placeholder="Search by name..." v-model="searchTerm">
+            <i class="search icon"></i>
+      </div>
+      </center>
+
+        <table class="ui striped table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>MsIsdn</th>
+                <th>E-mail</th>
+                <th>BirthDate</th>
+                <th>Created Time</th>
+                <th>Update Time</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr v-for="user in users">
+                    <td>{{user.ID}}</td>
+                    <td>{{user.Name}}</td>
+                    <td>{{user.Msisdn}}</td>
+                    <td>{{user.Email}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="ui divider"></div>
+    <h3 class="ui header">Visitor count: </h3>
+    <div id="sfcxtnxkpc7uls894cr986x21232gt3yaw2"></div>
+    <script type="text/javascript" src="https://counter2.freecounter.ovh/private/counter.js?c=xtnxkpc7uls894cr986x21232gt3yaw2&down=async" async></script>
+    <noscript><a href="https://www.freecounterstat.com" title="free hit counter"><img src="https://counter2.freecounter.ovh/private/freecounterstat.php?c=xtnxkpc7uls894cr986x21232gt3yaw2" border="0" title="free hit counter" alt="free hit counter"></a></noscript>
+    
+
+    </body>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+
+ 
+  
+
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            users : [],
+            searchTerm: "",
+        },
+        mounted() {
+            axios.get("http://localhost:8080/big-project")
+            .then(response => {this.users = response.data})
+        },
+        methods: {
+            getUser: function () {
+                axios.get("http://localhost:8080/search?name=" + this.searchTerm)
+                .then(response => {this.users = response.data})
+                console.log(this.searchTerm)
+            } 
+        }
+    })
+    </script>
+    <style>
+    body {
+        background-color: 	#DCDCDC;
+    }
+    </style>
+</html>
